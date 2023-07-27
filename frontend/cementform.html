@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <header class="text-gray-600 body-font bg-yellow-200">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <nav class="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+        <a onclick="remove()" href="steel.html" class="mr-5 font-bold hover:text-gray-900"><- Back</a>
+      </nav>
+      <a
+        class="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full"
+          viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">BuildiKo</span>
+      </a>
+      <div class="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+        <button onclick="logout()"
+          class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Logout
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <div id="detail" class="flex justify-center h-[500px] pt-16 bg-yellow-50">
+
+  </div>
+  <!-- footer -->
+  <footer class="text-gray-600 body-font bg-gray-100">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+      <a class="flex title-font font-medium items-center md:justify-start justify-center  text-gray-900">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-yellow-500 rounded-full" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">BuildiKo</span>
+      </a>
+      <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2023 BuildiKo —
+        <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer" target="_blank">@knyttneve</a>
+      </p>
+      <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+        <a class="text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+          </svg>
+        </a>
+        <a class="ml-3 text-gray-500">
+          <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+            <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+            <circle cx="4" cy="4" r="2" stroke="none"></circle>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </footer>
+ <script>
+  
+let product = JSON.parse(localStorage.getItem("data")) || []
+let logg = JSON.parse(localStorage.getItem("log")) || []
+let log = logg.find((z)=>z.loggedin != null)
+let userid=log.loggedin
+//console.log(userid)
+const detail = document.getElementById("detail")
+
+
+let cement = () => {
+    fetch('http://localhost/phpprograms/buildiko/backend/cement.php', {
+        method: 'GET',
+        header: {
+            'content-type': 'application/json',
+            'accept': 'application/json'
+        }
+    }).then(res => res.json())
+        .then(data => {
+            //console.log(data)
+            let product = data
+             productname(product)
+            // menuitembtn(product)
+        })
+}
+cement()
+
+function productname(home) {
+  let items = product.map((x) => {
+      let {id,item} =x
+      //console.log(id)
+      let search = home.find((x)=>x.id == id)
+     
+      let {name,type,qty,price,category } = search
+      return `
+      <form action="http://localhost/phpprograms/buildiko/backend/order.php" method="post" class=" w-[500px] h-[350px] rounded-md shadow-sm shadow-gray-500 bg-white" >
+        <h1 class=" font-bold text-2xl text-center py-6">Checkout</h1>
+        <div class="flex ml-32 my-2">
+            <h1 class="font-bold text-[20px]">Name</h1>
+            <input id="name" type="text" name="name" readonly  value=${name} class="font-medium bg-gray-100 w-40 text-[18px] px-2 ml-12">
+        </div>
+        <div class="flex ml-32 my-2">
+            <h1 class="font-bold text-[20px]">Category</h1>
+            <input id="category" type="text" name="category" readonly value=${category} class="font-medium bg-gray-100 w-40 text-[18px] px-2 ml-4">
+        </div>
+        <div class="flex ml-32 my-2">
+            <h1 class="font-bold text-[20px]">Types</h1>
+            <input type="text" id="type" name="type" readonly value=${type} class="font-medium text-[18px] bg-gray-100 w-40 px-2 ml-12">
+        </div>
+        <div class="flex ml-32 my-2">
+            <h1 class="font-bold text-[20px]">Quantity</h1>
+            <input type="text" id="qty" name="qty" readonly value=${qty} class="font-medium text-[18px] bg-gray-100 w-40 px-2 ml-5">
+        </div>
+        <div class="flex ml-32 my-2">
+            <h1 class="font-bold text-[20px]">Total</h1>
+            <input type="text" id="price" name="price" readonly value="${price}" class="font-medium text-[18px] bg-gray-100 w-40 px-2 ml-14">
+        </div>
+        <div class="flex ml-32 my-2 hidden">
+            <h1 class="font-bold text-[20px]">Total</h1>
+            <input type="text" id="price" name="userid" readonly value="${userid}" class="font-medium text-[18px] bg-gray-100 w-40 px-2 ml-14">
+        </div>
+        <button type="submit" class="ml-48 font-medium px-5 py-1 bg-yellow-500 rounded-md my-4 hover:bg-yellow-600">Checkout</button>
+    </form> `;
+  
+  })
+  
+  detail.innerHTML = items
+
+}
+
+//  let send = (name,type,qty,price,category) =>{
+//    console.log(type)
+//   fetch('http://localhost/phpprograms/buildiko/backend/order.php', {
+//               method:'POST',
+//               header:{
+//                   'content-type':'application/json',
+//                   'accept':'application/json'
+//                 },
+//                 body:JSON.stringify()
+              
+//             }).then(res=>{ return res.text()})
+//             .then(data=>{
+//                 console.log(data)
+//             })
+// }
+
+let remove =()=>{
+    localStorage.removeItem('data')
+}
+let logout = () =>{
+    localStorage.clear()
+    location.href =`login.html`
+}
+ </script>
+</body>
+
+</html>
