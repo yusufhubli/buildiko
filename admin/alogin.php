@@ -48,7 +48,8 @@ if (isset($_POST['name']))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin login page</title>
-    <style>
+    <script  src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <!-- <style>
         head,
         body {
             margin: 0;
@@ -214,17 +215,17 @@ if (isset($_POST['name']))
             font-weight: bolder;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
-    </style>
+    </style> -->
 </head>
 
-<body>
-    <div id="login">
-        <h2>Sign In</h2>
+<body class="bg-yellow-200 flex justify-center item-center">
+    <div id="login" class="mt-28 w-[400px] bg-white h-72 rounded-md shadow-md shadow-gray-400">
+        <h2 class="text-center text-2xl font-bold pt-8 pb-4">Admin Login</h2>
         <div id="signin">
-            <form method="post">
-                <input class="log"  type="text" name="name" placeholder="name" required>
-                <input class="log"  type="password" name="password" placeholder="password" required>
-                <input type="submit" value="Login" name="submit">
+            <form class="text-center" method="post">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-72 px-2 py-1 rounded-md outline-none my-3"  type="text" name="name" placeholder="name" required><br>
+                <input class="border-2 placeholder:text-black border-yellow-400 w-72 px-2 py-1 rounded-md outline-none my-3"  type="password" name="password" placeholder="password" required><br>
+                <input class=" w-72 px-2 py-1 hover:bg-yellow-300 text-lg rounded-md bg-yellow-400 font-bold my-3" type="submit" value="Login" name="submit">
             </form>
         </div>
         

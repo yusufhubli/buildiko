@@ -9,7 +9,8 @@ require '../backend/connect.php';
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
+    <script  src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <!-- <style>
         head,
         body {
             margin: 0;
@@ -175,23 +176,23 @@ require '../backend/connect.php';
             font-weight: bolder;
             font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
-    </style>
+    </style> -->
     <title>Add Sand</title>
 </head>
 
-<body>
-    <div id="login">
-        <h2>Add Sand</h2>
+<body class="bg-yellow-200 flex justify-center">
+    <div id="login" class=" w-[500px] h-[485px] bg-white rounded-md shadow-md mt-7 shadow-gray-400">
+        <h2 class=" text-2xl font-bold text-center py-2">Add Sand</h2>
         <div id="signup">
-            <form method="post" enctype="multipart/form-data">
-                <input class="log"  type="text" name="id" placeholder="id">
-                <input class="log"  type="file" name="image" placeholder="image">
-                <input class="log"  type="text" name="name" placeholder="name">
-                <input class="log"  type="text" name="type" placeholder="type">
-                <input class="log"  type="number" name="qty" placeholder="qty">
-                <input class="log"  type="number" name="price" placeholder="price">
-                <input class="log"  type="text" name="category" placeholder="category">
-                <input name="submit" type="submit" value="Add">
+            <form class="text-center" method="post" enctype="multipart/form-data">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-80 px-2 py-1 rounded-md outline-none my-2"  type="text" name="id" placeholder="id">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-80 px-2 py-1 rounded-md outline-none my-2"  type="file" name="image" placeholder="image">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-80 px-2 py-1 rounded-md outline-none my-2"  type="text" name="name" placeholder="name">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-80 px-2 py-1 rounded-md outline-none my-2"  type="text" name="type" placeholder="type">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-80 px-2 py-1 rounded-md outline-none my-2"  type="number" name="qty" placeholder="qty">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-80 px-2 py-1 rounded-md outline-none my-2"  type="number" name="price" placeholder="price">
+                <input class="border-2 placeholder:text-black border-yellow-400 w-80 px-2 py-1 rounded-md outline-none my-2"  type="text" name="category" placeholder="category">
+                <input name="submit" class="w-80 px-2 py-1 hover:bg-yellow-300 text-lg rounded-md bg-yellow-400 font-bold my-3" type="submit" value="Add">
             </form>
         </div>
     </div>

@@ -90,7 +90,9 @@
 
     let product = JSON.parse(localStorage.getItem("data")) || []
     const detail = document.getElementById("detail")
-
+    let logg = JSON.parse(localStorage.getItem("log")) || []
+let log = logg.find((z)=>z.loggedin != null)
+let userid=log.loggedin
 
     let cement = () => {
       fetch('http://localhost/phpprograms/buildiko/backend/steel.php', {
@@ -116,7 +118,7 @@
         let search = home.find((x) => x.id == id)
         let { name, type, qty, price, category } = search
         return `
-      <form action="http://localhost/phpprograms/buildiko/backend/order.php" method="post" class=" w-[500px] h-[350px] rounded-md shadow-sm shadow-gray-500 bg-white" >
+        <form action="http://localhost/phpprograms/buildiko/backend/order.php" method="post" class=" w-[500px] h-[350px] rounded-md shadow-sm shadow-gray-500 bg-white" >
         <h1 class=" font-bold text-2xl text-center py-6">Checkout</h1>
         <div class="flex ml-32 my-2">
             <h1 class="font-bold text-[20px]">Name</h1>
@@ -137,6 +139,10 @@
         <div class="flex ml-32 my-2">
             <h1 class="font-bold text-[20px]">Total</h1>
             <input type="text" id="price" name="price" readonly value="${price}" class="font-medium text-[18px] bg-gray-100 w-40 px-2 ml-14">
+        </div>
+        <div class="flex ml-32 my-2 hidden">
+            <h1 class="font-bold text-[20px]">Total</h1>
+            <input type="text" id="price" name="userid" readonly value="${userid}" class="font-medium text-[18px] bg-gray-100 w-40 px-2 ml-14">
         </div>
         <button type="submit" class="ml-48 font-medium px-5 py-1 bg-yellow-500 rounded-md my-4 hover:bg-yellow-600">Checkout</button>
     </form>  `;

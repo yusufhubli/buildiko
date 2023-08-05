@@ -13,16 +13,18 @@ $result = mysqli_query($connect,$query);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script  src="https://cdn.tailwindcss.com/3.3.0"></script>
     <title>Manage users</title>
 </head>
-<body>
-    <table style="justify-content:center;border: 1px solid black">
+<body class="bg-yellow-200">
+<h1 class="text-center mt-10 text-2xl font-bold">User Table</h1>
+    <table class="mb-14 mt-10 mx-16 bg-white">
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Delete</th>
+        <th class="border-2 border-gray-800 border-collapse py-2 w-56">Id</th>
+        <th class="border-2 border-gray-800 border-collapse py-2 w-56">Name</th>
+        <th class="border-2 border-gray-800 border-collapse py-2 w-56">Email</th>
+        <th class="border-2 border-gray-800 border-collapse py-2 w-56">Password</th>
+        <th class="border-2 border-gray-800 border-collapse py-2 w-56">Delete</th>
     </tr>
 
     <?php 
@@ -31,11 +33,11 @@ $result = mysqli_query($connect,$query);
 
     ?>
     <tr>
-        <td><?php echo $rows['userid'] ?></td>
-        <td><?php echo $rows['name'] ?></td>
-        <td><?php echo $rows['email'] ?></td>
-        <td><?php echo $rows['password'] ?></td>
-        <td><a href="deleteusers.php?userid=<?php echo $rows['userid'] ?>">Delete</a></td>
+        <td class="border-2 text-center border-gray-800 border-collapse py-2 w-56"><?php echo $rows['userid'] ?></td>
+        <td class="border-2 text-center border-gray-800 border-collapse py-2 w-56"><?php echo $rows['name'] ?></td>
+        <td class="border-2 text-center border-gray-800 border-collapse py-2 w-56"><?php echo $rows['email'] ?></td>
+        <td class="border-2 text-center border-gray-800 border-collapse py-2 w-56"><?php echo $rows['password'] ?></td>
+        <td class="border-2 text-center border-gray-800 border-collapse py-2 w-56"><a class="px-6 py-1 text-white rounded-md bg-red-500 font-bold"  href="deleteusers.php?userid=<?php echo $rows['userid'] ?>">Delete</a></td>
 
     </tr>
 
